@@ -41,8 +41,7 @@ class MainController: Controller() {
             model.field.add(mutableListOf())
             var w = 0
             str.forEachIndexed { itemIndex, item ->
-                if (item == 'P')
-                {
+                if (item == 'P') {
                     model.playerX = itemIndex
                     model.playerY = strIndex
                 }
@@ -135,8 +134,7 @@ class MainController: Controller() {
         }
     }
 
-    private fun alertOnWin()
-    {
+    private fun alertOnWin() {
         val result: Optional<ButtonType> = alert(Alert.AlertType.CONFIRMATION, "Finish!", "You reached the end of the labyrinth. Exit the game?").showAndWait()
         if (result.isPresent && result.get() == ButtonType.OK) {
             exitProcess(0)
@@ -146,13 +144,11 @@ class MainController: Controller() {
         }
     }
 
-    fun changeToChoosingScreen()
-    {
+    fun changeToChoosingScreen() {
         find(HelloView::class).replaceWith(ChoosingView::class)
     }
 
-    fun changeToMainScreen()
-    {
+    fun changeToMainScreen() {
         find(ChoosingView::class).replaceWith(MainView::class)
     }
 

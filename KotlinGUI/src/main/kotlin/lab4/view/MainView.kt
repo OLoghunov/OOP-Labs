@@ -14,8 +14,7 @@ class MainView : View("Maze") {
     private var moveCounter = SimpleIntegerProperty(0)
     private var canvas : Canvas = Canvas((ctrl.model.width * 30).toDouble(), (ctrl.model.height * 30).toDouble())
 
-    private fun draw()
-    {
+    private fun draw() {
         val g : GraphicsContext = this.canvas.graphicsContext2D
         g.fill = Color.SANDYBROWN
         g.fillRect(0.0,0.0,(ctrl.model.width * 30).toDouble(),(ctrl.model.height * 30).toDouble())

@@ -84,8 +84,7 @@ class MainView : View("Game of life") {
                             }
                         }
                     }
-                    button("Step")
-                    {
+                    button("Step") {
                         action {
                             if (!ctrl.gameIsInitiated)
                                 ctrl.startGame(bResolution.value, bDensity.value)
@@ -93,14 +92,12 @@ class MainView : View("Game of life") {
                             draw()
                         }
                     }
-                    button("Pause")
-                    {
+                    button("Pause") {
                         action {
                             ctrl.pauseGame()
                         }
                     }
-                    button("Continue")
-                    {
+                    button("Continue") {
 
                         action {
                             if (ctrl.gameIsInitiated) {
@@ -117,8 +114,7 @@ class MainView : View("Game of life") {
                             }
                         }
                     }
-                    button("Stop")
-                    {
+                    button("Stop") {
                         action {
                             ctrl.endGame()
                             clearBoard()

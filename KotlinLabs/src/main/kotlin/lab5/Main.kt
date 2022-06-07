@@ -24,7 +24,7 @@ fun main() {
         println(shape.javaClass)
     }*/
 
-    class AreaComparator: Comparator<ColoredShape>{
+    class AreaComparator: Comparator<ColoredShape> {
         override fun compare(o1: ColoredShape?, o2: ColoredShape?): Int {
             if(o1 == null || o2 == null)
                 return 0

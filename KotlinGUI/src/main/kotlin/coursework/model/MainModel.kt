@@ -33,10 +33,8 @@ class MainModel: ViewModel() {
 
     private fun countNeighbours(x : Int, y : Int) : Int {
         var count = 0
-        for (i in -1..1)
-        {
-            for (j in -1..1)
-            {
+        for (i in -1..1) {
+            for (j in -1..1) {
                 val col : Int = (x + i + cols) % cols
                 val row : Int = (y + j + rows) % rows
                 val isSelfCheck = (col == x && row == y)
