@@ -14,38 +14,35 @@ class MainView : View("Game of life") {
     private var bResolution = ctrl.model.bind { SimpleDoubleProperty() }
     private var bDensity = ctrl.model.bind { SimpleIntegerProperty() }
 
-    private var canvas : Canvas = Canvas(800.0, 500.0)
+    private var canvas: Canvas = Canvas(800.0, 500.0)
 
-    private fun manualDraw(event: javafx.scene.input.MouseEvent)
-    {
+    private fun manualDraw(event: javafx.scene.input.MouseEvent) {
         val mouseX = event.x.toInt()
         val mouseY = event.y.toInt()
         try {
-            ctrl.setAlive(mouseX/bResolution.intValue(), mouseY/bResolution.intValue())
+            ctrl.setAlive(mouseX / bResolution.intValue(), mouseY / bResolution.intValue())
             draw()
-        } catch (e : java.lang.Exception) {
+        } catch (e: java.lang.Exception) {
             print("")
         }
     }
 
-    private fun clearBoard()
-    {
-        val g : GraphicsContext = this.canvas.graphicsContext2D
+    private fun clearBoard() {
+        val g: GraphicsContext = this.canvas.graphicsContext2D
         g.fill = Color.WHITE
-        g.fillRect(0.0,0.0,800.0,500.0)
+        g.fillRect(0.0, 0.0, 800.0, 500.0)
     }
 
-    private fun draw()
-    {
-        val g : GraphicsContext = this.canvas.graphicsContext2D
+    private fun draw() {
+        val g: GraphicsContext = this.canvas.graphicsContext2D
         g.fill = Color.WHITE
-        g.fillRect(0.0,0.0,800.0,500.0)
+        g.fillRect(0.0, 0.0, 800.0, 500.0)
 
         g.fill = Color.BLACK
         var i = 0.0
-        while (i*bResolution.value <= ctrl.model.height - bResolution.value) {
+        while (i * bResolution.value <= ctrl.model.height - bResolution.value) {
             var j = 0.0
-            while (j*bResolution.value <= ctrl.model.width - bResolution.value) {
+            while (j * bResolution.value <= ctrl.model.width - bResolution.value) {
                 if (ctrl.model.field[i.toInt()][j.toInt()])
                     g.fillRect(j * bResolution.value, i * bResolution.value, bResolution.value, bResolution.value)
                 j++
@@ -104,6 +101,7 @@ class MainView : View("Game of life") {
                     }
                     button("Continue")
                     {
+
                         action {
                             if (ctrl.gameIsInitiated) {
                                 ctrl.modelContinue()
