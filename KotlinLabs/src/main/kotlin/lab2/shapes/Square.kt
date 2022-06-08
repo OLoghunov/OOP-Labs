@@ -3,7 +3,7 @@ package lab2.shapes
 import lab2.interfaces.ColoredShape
 import java.awt.Color
 
-class Square(override val borderColor : Color, override val fillColor : Color, private val sideLength : Double) : ColoredShape {
+class Square(override val borderColor : Color, override val fillColor : Color, val sideLength : Double) : ColoredShape {
     init {
         require(sideLength > 0)
     }

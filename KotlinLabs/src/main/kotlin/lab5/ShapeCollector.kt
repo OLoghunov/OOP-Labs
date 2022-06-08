@@ -1,17 +1,18 @@
 package lab5
 
-import lab5.interfaces.ColoredShape
+import lab2.interfaces.ColoredShape
 import java.awt.Color
 
-class ShapeCollector<T : ColoredShape> {
+class ShapeCollector<T : ColoredShape> : lab2.ShapeCollector() {
     private val listOfShapes = arrayListOf<T>()
-    private var size = 0
-    fun pushShape(shape : T) {
+
+    internal fun pushShape(shape : T) {
         listOfShapes.add(shape)
-        size++
     }
 
-    fun getShapeWithMaxArea() : ColoredShape {
+    override fun getShapeWithMaxArea() : T? {
+        if (listOfShapes.isEmpty())
+            return null
         var maxArea = listOfShapes[0].calcArea()
         var shapeWithMaxArea = listOfShapes[0]
         listOfShapes.forEach { shape ->
@@ -23,8 +24,9 @@ class ShapeCollector<T : ColoredShape> {
         return shapeWithMaxArea
     }
 
-    fun getShapeWithMinArea() : ColoredShape {
-        require(size > 0)
+    override fun getShapeWithMinArea() : T? {
+        if (listOfShapes.isEmpty())
+            return null
         var minArea = listOfShapes[0].calcArea()
         var shapeWithMinArea = listOfShapes[0]
         listOfShapes.forEach { shape ->
@@ -36,16 +38,8 @@ class ShapeCollector<T : ColoredShape> {
         return shapeWithMinArea
     }
 
-    fun getAreaOfCollection() : Double {
-        var areaOfCollection = 0.0
-        listOfShapes.forEach { shape ->
-            areaOfCollection += shape.calcArea()
-        }
-        return areaOfCollection
-    }
-
-    fun findAllByBorderColor(borderColor : Color) : List<ColoredShape> {
-        val resultArray = arrayListOf<ColoredShape>()
+    override fun findAllByBorderColor(borderColor : Color) : List<T> {
+        val resultArray = arrayListOf<T>()
         listOfShapes.forEach { shape ->
             if (shape.borderColor == borderColor)
                 resultArray.add(shape)
@@ -53,8 +47,8 @@ class ShapeCollector<T : ColoredShape> {
         return resultArray
     }
 
-    fun findAllByFillColor(fillColor : Color) : List<ColoredShape> {
-        val resultArray = arrayListOf<ColoredShape>()
+    override fun findAllByFillColor(fillColor : Color) : List<T> {
+        val resultArray = arrayListOf<T>()
         listOfShapes.forEach { shape ->
             if (shape.fillColor == fillColor)
                 resultArray.add(shape)
@@ -62,17 +56,14 @@ class ShapeCollector<T : ColoredShape> {
         return resultArray
     }
 
-    fun getCollection() : List<ColoredShape> {
+    override fun getCollection() : List<T> {
         return listOfShapes
     }
 
-    fun getSizeOfCollection() : Int {
-        return size
-    }
-
-    fun getCollectionGroupedByBorderColor() : Map<Color, List<ColoredShape>> {
-        require(size > 0)
-        val sortedList = mutableMapOf<Color, MutableList<ColoredShape>>()
+    override fun getCollectionGroupedByBorderColor() : Map<Color, List<T>> {
+        if (listOfShapes.isEmpty())
+            return mapOf()
+        val sortedList = mutableMapOf<Color, MutableList<T>>()
         val collectionColors = mutableSetOf<Color>()
 
         listOfShapes.forEach { shape ->
@@ -93,9 +84,10 @@ class ShapeCollector<T : ColoredShape> {
         return sortedList
     }
 
-    fun getCollectionGroupedByFillColor() : Map<Color, List<ColoredShape>> {
-        require(size > 0)
-        val sortedList = mutableMapOf<Color, MutableList<ColoredShape>>()
+    override fun getCollectionGroupedByFillColor() : Map<Color, List<T>> {
+        if (listOfShapes.isEmpty())
+            return mapOf()
+        val sortedList = mutableMapOf<Color, MutableList<T>>()
         val collectionColors = mutableSetOf<Color>()
 
         listOfShapes.forEach { shape ->
@@ -116,15 +108,15 @@ class ShapeCollector<T : ColoredShape> {
         return sortedList
     }
 
-    fun findShapesByType(reqShape: Class<out ColoredShape>) : List<ColoredShape> {
-        val resultList = arrayListOf<ColoredShape>()
+    internal fun findShapesByType(reqShape: Class<out T>) : List<T> {
+        val resultList = arrayListOf<T>()
         listOfShapes.forEach { shape ->
             if (shape.javaClass == reqShape) resultList.add(shape)
         }
         return resultList
     }
 
-    fun addAll(col : Collection<out T>) {
+    fun addAll(col : Collection<T>) {
         col.forEach {
             this.pushShape(it)
         }

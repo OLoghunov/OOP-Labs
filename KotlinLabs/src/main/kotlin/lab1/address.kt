@@ -1,7 +1,5 @@
-class Address(private val index: Int, private val city: String, private val street: String, private val house: Int) {
-    fun getAddress() : String {
+class Address(val index: Int, val city: String, val street: String, val house: Int) {
+    override fun toString(): String {
         return "$index,$city,$street,$house"
     }
-    fun getIndex(): Int = index
-    fun getStreet() : String = street
 }

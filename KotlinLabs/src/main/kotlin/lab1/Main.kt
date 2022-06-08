@@ -16,34 +16,34 @@ fun main() {
         "454533,Sochi,Voikova,74",
         "242553,Yekaterinburg,Pobedy,29")
     val newList = parseAddresses(list)
-    var minIndex = newList[0].getIndex()
-    var maxIndex = newList[0].getIndex()
+    var minIndex = newList[0].index
+    var maxIndex = newList[0].index
     var numMin = 0
     var numMax = 0
-    var maxStreet = newList[0].getStreet()
+    var maxStreet = newList[0].street
     var numStreet = 0
     println(message = "read addresses:")
 
     newList.forEach { address ->
-        println(address.getAddress())
-        if (address.getIndex() < minIndex) {
-            minIndex = address.getIndex()
+        println(address.toString())
+        if (address.index < minIndex) {
+            minIndex = address.index
             numMin = newList.indexOf(address)
         }
-        if (address.getIndex() > maxIndex) {
-            maxIndex = address.getIndex()
+        if (address.index > maxIndex) {
+            maxIndex = address.index
             numMax = newList.indexOf(address)
         }
-        if (address.getStreet() > maxStreet) {
-            maxStreet = address.getStreet()
+        if (address.street > maxStreet) {
+            maxStreet = address.street
             numStreet = newList.indexOf(address)
         }
     }
 
     println("minimal index $minIndex has address:")
-    println(newList[numMin].getAddress())
+    println(newList[numMin].toString())
     println("maximum index $maxIndex has address:")
-    println(newList[numMax].getAddress())
+    println(newList[numMax].toString())
     println("the longest street name $maxStreet has an address:")
-    println(newList[numStreet].getAddress())
+    println(newList[numStreet].toString())
 }

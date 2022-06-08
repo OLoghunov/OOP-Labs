@@ -4,7 +4,7 @@ import lab2.interfaces.ColoredShape
 import java.awt.Color
 import kotlin.math.PI
 
-class Circle(override val borderColor: Color, override val fillColor: Color, private val radius: Double) : ColoredShape {
+class Circle(override val borderColor: Color, override val fillColor: Color, val radius: Double) : ColoredShape {
     init {
         require(radius > 0)
     }

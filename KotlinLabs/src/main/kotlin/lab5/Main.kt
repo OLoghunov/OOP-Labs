@@ -1,10 +1,10 @@
 package lab5
 
-import lab5.interfaces.ColoredShape
-import lab5.shapes.Circle
-import lab5.shapes.Rectangle
-import lab5.shapes.Square
-import lab5.shapes.Triangle
+import lab2.interfaces.ColoredShape
+import lab2.shapes.Circle
+import lab2.shapes.Rectangle
+import lab2.shapes.Square
+import lab2.shapes.Triangle
 import java.awt.Color
 
 fun main() {
