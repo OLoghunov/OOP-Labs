@@ -19,7 +19,7 @@ import lab34.remote.repository.WeatherRepository
 
 private const val IS_DAY = 1
 
-private const val BOT_TOKEN = "5733349852:AAFBZ7ahNXO4m-c_Cm9iNyuEO59P5fWjGdg"
+private const val BOT_TOKEN = "YOUR TOKEN"
 private const val TIMEOUT_TIME = 30
 
 class WeatherBot(private val weatherRepository: WeatherRepository) {
